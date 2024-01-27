@@ -1,12 +1,14 @@
 package com.example.transaction.service;
 
 import com.example.transaction.domain.user.UserType;
+import com.example.transaction.dtos.UserDTO;
 import com.example.transaction.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.transaction.domain.user.User;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -24,4 +26,21 @@ public class UserService {
 
     }
 
+    public User findUserById(Long id) throws Exception{
+        return this.userRepository.findUserById(id).orElseThrow(() -> new Exception("Usuario nao encontrado"));
+    }
+
+    public void saveUser(User user){
+        this.userRepository.save(user);
+    }
+
+    public User createUser(UserDTO data){
+        User newUser = new User(data);
+        this.saveUser(newUser);
+        return newUser;
+    }
+
+    public List<User> getAllUsers(){
+        return this.userRepository.findAll();
+    }
 }
