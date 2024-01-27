@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @AllArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(of="id")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
