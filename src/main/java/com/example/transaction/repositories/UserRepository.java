@@ -1,5 +1,5 @@
 package com.example.transaction.repositories;
-
+import com.example.transaction.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
